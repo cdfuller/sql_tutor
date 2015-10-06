@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'slim-rails'
 gem 'codemirror-rails'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'dotenv-rails'

@@ -71,6 +71,7 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
+    newrelic_rpm (3.12.0.288)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.2)
@@ -174,6 +175,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl
   jquery-rails
+  newrelic_rpm
   pg
   powder
   pry-byebug
@@ -183,3 +185,6 @@ DEPENDENCIES
   slim-rails
   spring
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.6
