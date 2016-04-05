@@ -253,7 +253,7 @@
       {"tables": ["albums", "tracks"], "topic": "join"}
     ],
     [
-      "SELECT * FROM artists AS ar JOIN albums AS al ON ar.id = al.artist_id JOIN tracks AS tr ON tr.album_id = al.id WHERE tr.name = 'Midnight';",
+      "SELECT ar.name FROM artists AS ar JOIN albums AS al ON ar.id = al.artist_id JOIN tracks AS tr ON tr.album_id = al.id WHERE tr.name = 'Midnight';",
       "Give me a list of every artist who has performed the song \"Midnight\"",
       42,
       {"tables": ["albums", "artists", "tracks"], "topic": "join"}
