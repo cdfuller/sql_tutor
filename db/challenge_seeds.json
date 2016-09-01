@@ -271,7 +271,7 @@
       {"tables": ["artists", "albums"], "topic": "join"}
     ],
     [
-      "SELECT a.title, COUNT(*) FROM albums AS a JOIN tracks AS t ON (t.album_id = a.id) GROUP BY a.id ORDER BY a.title",
+      "SELECT a.title, COUNT(*) FROM albums AS a JOIN tracks AS t ON (a.id = t.album_id) GROUP BY a.id, a.title ORDER BY COUNT(*) DESC, a.title",
       "List all albums next to the number of tracks they each have",
       45,
       {"tables": ["albums", "tracks"], "topic": "join"}
