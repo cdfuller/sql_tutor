@@ -266,13 +266,13 @@
     ],
     [
       "SELECT ar.name, COUNT(*) FROM artists AS ar JOIN albums AS al ON ar.id = al.artist_id GROUP BY ar.id ORDER BY ar.name",
-      "List all artists and the number of albums they each have",
+      "List all artists and the number of albums they each have, ordered by the artist's name",
       44,
       {"tables": ["artists", "albums"], "topic": "join"}
     ],
     [
       "SELECT a.title, COUNT(*) FROM albums AS a JOIN tracks AS t ON (a.id = t.album_id) GROUP BY a.id, a.title ORDER BY COUNT(*) DESC, a.title",
-      "List all albums next to the number of tracks they each have",
+      "List all albums next to the number of tracks they each have, ordered by the number of tracks and then the album name",
       45,
       {"tables": ["albums", "tracks"], "topic": "join"}
     ],
