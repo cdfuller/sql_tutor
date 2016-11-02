@@ -7,7 +7,10 @@ gem 'pg'
 gem 'slim-rails'
 gem 'codemirror-rails'
 gem 'newrelic_rpm'
-gem 'puma'
+
+group :production do
+  gem 'puma'
+end
 
 group :development, :test do
   gem 'dotenv-rails'
