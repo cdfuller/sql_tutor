@@ -1,4 +1,5 @@
 class AttemptsController < ApplicationController
+  before_action :extra_logging
 
   def create
     challenge = Challenge.find_by(id: attempt_params[:challenge_id])
@@ -26,6 +27,10 @@ class AttemptsController < ApplicationController
 
   def attempt_params
     params.require(:attempt).permit(:query, :challenge_id)
+  end
+
+  def extra_logging
+    puts params if params
   end
 
 end
