@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
 
   before_action :load_challenge, :set_previous_results, only: [:show]
+  before_action :extra_logging
 
   def index
     @challenges = Challenge.all
@@ -23,6 +24,10 @@ class ChallengesController < ApplicationController
     expected = last_guess_correct ? @challenge.previous.query : @challenge.query
     @last_query = Attempt.results_for(flash[:query])
     @expected = Attempt.results_for(expected)
+  end
+
+  def extra_logging
+    puts params if params
   end
 
 end
