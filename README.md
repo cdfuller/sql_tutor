@@ -1,7 +1,7 @@
 
 # Sql Tutor
 
-Sql tutor app
+Clone this repository and `cd` into it.
 
 ### Setup
 
@@ -10,41 +10,29 @@ Install gems:
 $ bundle install
 ```
 
-Default environment variables are stored in the `dotenv` file. You should create both `.env.development` and `.env.test` files with your local configuration details.
-
+Drop the database (if it says no database exists, that's ok):
 ```
-$ cp dotenv .env.development
-$ cp dotenv .env.test
+$ bundle exec rake db:drop
 ```
 
-Create and seed the database:
+Create the database:
 ```
-$ rake db:setup
-```
-
-Setup pow using powder
-```
-$ powder install
-$ powder link
+$ bundle exec rake db:create
 ```
 
-Your app should start and be accessible at `http://launchpad.devbootcamp.dev`. You can restart the server with the command `$ powder restart`.
-
-### Development
-
-See a list of powder commands:
+Migrate the database (this will add tables to the DB):
 ```
-$ powder -h
+$ bundle exec rake db:migrate
 ```
 
-Run tests:
+Seed the database with sample data:
 ```
-$ RAILS_ENV=test rake spec
+$ bundle exec rake db:seed
 ```
 
-See the [wiki](https://github.com/devbootcamp-tech/wiki/wiki) for Git and deployment instructions.
+Start the server:
+```
+$ bundle exec rails s
+```
 
-
-### Scheduled jobs
-
-No scheduled jobs
+Visit [http://localhost:3000](http://localhost:3000)
