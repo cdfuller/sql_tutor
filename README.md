@@ -1,9 +1,12 @@
 
 # Sql Tutor
 
-Clone this repository and `cd` into it.
+In this challenge you'll move through a series of challenges that require you to form SQL queries to accomplish various tasks. The challenge itself takes the form of a rails app, so you'll be cloning it down and starting the server before you begin. Instructions are below, let's get started!
+
 
 ### Setup
+
+Clone this repository and `cd` into it.
 
 Install gems:
 ```
