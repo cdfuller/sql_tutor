@@ -31,6 +31,7 @@ $ bundle exec rake db:migrate
 Seed the database with sample data:
 ```
 $ bundle exec rake db:seed
+$ bundle exec rake db:sample:seed
 ```
 
 Start the server:
