@@ -7,7 +7,7 @@ defaults: &defaults
   ctype: en_US.UTF-8
   host: <%= ENV['DATABASE_HOST'] || 'localhost' %>
   port: <%= ENV['DATABASE_PORT'] || 5432 %>
-  database: <%= ENV['DATABASE'] %>
+  database: <%= ENV['DATABASE'] || 'sql_tutor' %>
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
 

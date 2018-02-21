@@ -1,4 +1,4 @@
-class CreateSampleData < ActiveRecord::Migration
+class CreateSampleData < ActiveRecord::Migration[4.2]
   def change
 
     sql = <<-SQL

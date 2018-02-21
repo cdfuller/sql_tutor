@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,100 +15,93 @@ ActiveRecord::Schema.define(version: 20161101155054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "albums", force: :cascade do |t|
-    t.string  "title",     limit: 160, null: false
-    t.integer "artist_id",             null: false
+  create_table "albums", id: :serial, force: :cascade do |t|
+    t.string "title", limit: 160, null: false
+    t.integer "artist_id", null: false
+    t.index ["artist_id"], name: "index_album_on_artist_id"
+    t.index ["id"], name: "index_album_on_id", unique: true
   end
 
-  add_index "albums", ["artist_id"], name: "index_album_on_artist_id", using: :btree
-  add_index "albums", ["id"], name: "index_album_on_id", unique: true, using: :btree
-
-  create_table "artists", force: :cascade do |t|
+  create_table "artists", id: :serial, force: :cascade do |t|
     t.string "name", limit: 120
+    t.index ["id"], name: "index_artist_on_id", unique: true
   end
 
-  add_index "artists", ["id"], name: "index_artist_on_id", unique: true, using: :btree
-
-  create_table "challenges", force: :cascade do |t|
-    t.string   "instructions"
-    t.string   "query"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "order"
-    t.json     "metadata"
+  create_table "challenges", id: :serial, force: :cascade do |t|
+    t.string "instructions"
+    t.string "query"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order"
+    t.json "metadata"
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string  "first_name",     limit: 40, null: false
-    t.string  "last_name",      limit: 20, null: false
-    t.string  "company",        limit: 80
-    t.string  "address",        limit: 70
-    t.string  "city",           limit: 40
-    t.string  "state",          limit: 40
-    t.string  "country",        limit: 40
-    t.string  "postal_code",    limit: 10
-    t.string  "phone",          limit: 24
-    t.string  "fax",            limit: 24
-    t.string  "email",          limit: 60, null: false
+  create_table "customers", id: :serial, force: :cascade do |t|
+    t.string "first_name", limit: 40, null: false
+    t.string "last_name", limit: 20, null: false
+    t.string "company", limit: 80
+    t.string "address", limit: 70
+    t.string "city", limit: 40
+    t.string "state", limit: 40
+    t.string "country", limit: 40
+    t.string "postal_code", limit: 10
+    t.string "phone", limit: 24
+    t.string "fax", limit: 24
+    t.string "email", limit: 60, null: false
     t.integer "support_rep_id"
+    t.index ["id"], name: "index_customer_on_id", unique: true
+    t.index ["support_rep_id"], name: "index_customers_on_support_rep_id"
   end
 
-  add_index "customers", ["id"], name: "index_customer_on_id", unique: true, using: :btree
-  add_index "customers", ["support_rep_id"], name: "index_customers_on_support_rep_id", using: :btree
-
-  create_table "employees", force: :cascade do |t|
-    t.string   "last_name",   limit: 20, null: false
-    t.string   "first_name",  limit: 20, null: false
-    t.string   "title",       limit: 30
-    t.integer  "reports_to"
+  create_table "employees", id: :serial, force: :cascade do |t|
+    t.string "last_name", limit: 20, null: false
+    t.string "first_name", limit: 20, null: false
+    t.string "title", limit: 30
+    t.integer "reports_to"
     t.datetime "birth_date"
     t.datetime "hire_date"
-    t.string   "address",     limit: 70
-    t.string   "city",        limit: 40
-    t.string   "state",       limit: 40
-    t.string   "country",     limit: 40
-    t.string   "postal_code", limit: 10
-    t.string   "phone",       limit: 24
-    t.string   "fax",         limit: 24
-    t.string   "email",       limit: 60
+    t.string "address", limit: 70
+    t.string "city", limit: 40
+    t.string "state", limit: 40
+    t.string "country", limit: 40
+    t.string "postal_code", limit: 10
+    t.string "phone", limit: 24
+    t.string "fax", limit: 24
+    t.string "email", limit: 60
+    t.index ["id"], name: "index_employee_on_id", unique: true
+    t.index ["reports_to"], name: "index_employees_on_reports_to"
   end
 
-  add_index "employees", ["id"], name: "index_employee_on_id", unique: true, using: :btree
-  add_index "employees", ["reports_to"], name: "index_employees_on_reports_to", using: :btree
-
-  create_table "invoices", force: :cascade do |t|
-    t.integer  "customer_id",                                             null: false
-    t.datetime "invoice_date",                                            null: false
-    t.string   "billing_address",     limit: 70
-    t.string   "billing_city",        limit: 40
-    t.string   "billing_state",       limit: 40
-    t.string   "billing_country",     limit: 40
-    t.string   "billing_postal_code", limit: 10
-    t.decimal  "total",                          precision: 10, scale: 2, null: false
+  create_table "invoices", id: :serial, force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.datetime "invoice_date", null: false
+    t.string "billing_address", limit: 70
+    t.string "billing_city", limit: 40
+    t.string "billing_state", limit: 40
+    t.string "billing_country", limit: 40
+    t.string "billing_postal_code", limit: 10
+    t.decimal "total", precision: 10, scale: 2, null: false
+    t.index ["customer_id"], name: "index_invoices_on_customer_id"
+    t.index ["id"], name: "index_invoice_on_id", unique: true
   end
 
-  add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
-  add_index "invoices", ["id"], name: "index_invoice_on_id", unique: true, using: :btree
-
-  create_table "media_types", force: :cascade do |t|
+  create_table "media_types", id: :serial, force: :cascade do |t|
     t.string "name", limit: 120
+    t.index ["id"], name: "index_media_type_on_id", unique: true
   end
 
-  add_index "media_types", ["id"], name: "index_media_type_on_id", unique: true, using: :btree
-
-  create_table "tracks", force: :cascade do |t|
-    t.string  "name",          limit: 200,                          null: false
+  create_table "tracks", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 200, null: false
     t.integer "album_id"
-    t.integer "media_type_id",                                      null: false
-    t.string  "composer",      limit: 220
-    t.integer "milliseconds",                                       null: false
+    t.integer "media_type_id", null: false
+    t.string "composer", limit: 220
+    t.integer "milliseconds", null: false
     t.integer "bytes"
-    t.decimal "unit_price",                precision: 10, scale: 2, null: false
+    t.decimal "unit_price", precision: 10, scale: 2, null: false
+    t.index ["album_id"], name: "index_tracks_on_album_id"
+    t.index ["id"], name: "index_track_on_id", unique: true
+    t.index ["media_type_id"], name: "index_track_on_media_type_id"
   end
-
-  add_index "tracks", ["album_id"], name: "index_tracks_on_album_id", using: :btree
-  add_index "tracks", ["id"], name: "index_track_on_id", unique: true, using: :btree
-  add_index "tracks", ["media_type_id"], name: "index_track_on_media_type_id", using: :btree
 
   add_foreign_key "albums", "artists", name: "albums_artist_id_fkey"
   add_foreign_key "customers", "employees", column: "support_rep_id", name: "customers_support_rep_id_fkey"
